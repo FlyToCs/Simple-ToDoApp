@@ -34,22 +34,31 @@ namespace cw9.Repositorise
 
         public void UpdateStatus(int id, bool st)
         {
-            throw new NotImplementedException();
+            var connection = new SqlConnection(_connectionString);
+            var query = "UPDATE ToDoItems Set IsDone = @IsDone WHERE Id = @Id";
+            connection.Execute(query, new { Id = id, IsDone = st });
+
         }
 
         public List<ToDoItem> GetAll()
         {
-            throw new NotImplementedException();
+            var connection = new SqlConnection(_connectionString);
+            var query = "SELECT * FROM ToDoItems";
+            return connection.Query<ToDoItem>(query).ToList();
         }
 
         public ToDoItem GetById(int id)
         {
-            throw new NotImplementedException();
+            var connection = new SqlConnection(_connectionString);
+            var query = "SELECT * FROM ToDoItems WHERE Id = @Id";
+            return connection.QuerySingle<ToDoItem>(query, new {Id = id});
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var connection = new SqlConnection(_connectionString);
+            var query = "delete FROM ToDoItems WHERE Id = @Id";
+            connection.Execute(query, new { Id = id });
         }
     }
 }

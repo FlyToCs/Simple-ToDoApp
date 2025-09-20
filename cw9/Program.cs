@@ -79,7 +79,7 @@ do
                         var isok = bool.TryParse(Console.ReadLine(), out bool result);
                         if (isok)
                         {
-                            _serv.Changestatus(taskid, result);
+                            _serv.ChangeStatus(taskid, result);
                             Console.WriteLine("status changed.");
                             Console.ReadKey();
                         }

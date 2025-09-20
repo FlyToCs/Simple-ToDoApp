@@ -14,7 +14,7 @@ namespace cw9.Service
     public class ToDoService : IToDoService
     {
         //IRepository _repo = new FileRepository(@"C:\maktab2\file2.txt");
-        private IRepository _repo = new DapperRepository();
+        private IRepository _repo = new EfRepository();
 
         public int AddItem(ItemDto item)
         {
@@ -36,12 +36,12 @@ namespace cw9.Service
             return _repo.GetAll();
         }
 
-        public void Changestatus(int id, bool st)
+        public void ChangeStatus(int taskId, bool st)
         {
-            if (_repo.GetById(id).Id == 0)
+            if (_repo.GetById(taskId).Id == 0)
                 throw new Exception("Not Found!");
             else
-            { _repo.UpdateStatus(id, st); }
+            { _repo.UpdateStatus(taskId, st); }
 
 
         }

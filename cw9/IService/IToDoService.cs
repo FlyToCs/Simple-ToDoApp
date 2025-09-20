@@ -13,7 +13,7 @@ namespace cw9.IService
         int AddItem(ItemDto item);
         ToDoItem TaskDetails(int id);
         void DeleteTask(int id);
-       List<ToDoItem>  ShowAllTasks();
-        void Changestatus(int taskid, bool result);
+        List<ToDoItem> ShowAllTasks();
+        void ChangeStatus(int taskId, bool result);
     }
 }

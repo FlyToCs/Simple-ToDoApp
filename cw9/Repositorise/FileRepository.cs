@@ -24,10 +24,10 @@ namespace cw9.Repositorise
             Filepath = filePath;
         }
         private readonly string Filepath;
-        private List<ToDoItem> LoadFile()
+        private List<ToDoItem?> LoadFile()
         {
             string json = File.ReadAllText(Filepath);
-            return JsonConvert.DeserializeObject<List<ToDoItem>>(json) ?? new List<ToDoItem>();
+            return JsonConvert.DeserializeObject<List<ToDoItem>>(json) ?? new List<ToDoItem?>();
         }
         public int GetId()
         {
@@ -37,12 +37,12 @@ namespace cw9.Repositorise
             else
                 return list.MaxBy(x => x.Id).Id + 1;
         }
-        public void SaveFile(List<ToDoItem> list)
+        public void SaveFile(List<ToDoItem?> list)
         {
             string json = JsonConvert.SerializeObject(list);
             File.WriteAllText(Filepath, json);
         }
-        public int Create(ToDoItem item)
+        public int Create(ToDoItem? item)
         {
           
             var list = LoadFile();
@@ -71,13 +71,13 @@ namespace cw9.Repositorise
       
 
 
-        public List<ToDoItem> GetAll()
+        public List<ToDoItem?> GetAll()
         {
            return LoadFile();
         }
 
         
-        public ToDoItem GetById(int id)
+        public ToDoItem? GetById(int id)
         {
             var list =LoadFile();
             foreach (var item in list)

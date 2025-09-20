@@ -11,10 +11,10 @@ namespace cw9.Contracts
     public interface IRepository
     {
         int GetId ();
-        int Create(ToDoItem item);
+        int Create(ToDoItem? item);
         void UpdateStatus(int id , bool st);
-        List<ToDoItem> GetAll();
-        ToDoItem GetById(int id);
+        List<ToDoItem?> GetAll();
+        ToDoItem? GetById(int id);
         void Delete(int id);
        
     }
